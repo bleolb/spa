@@ -13,7 +13,7 @@ let api = express.Router(),
 api.get('/get_usuarios', usuarioControl.getUsuario)
 
 api.post('/insert_usuario', usuarioControl.insertOne)
-api.put('/update/:id', autenticacioncontrol.autentificar, usuarioControl.updateOne)
+api.put('/update/:id', usuarioControl.updateOne)
 api.get('/usuario/:id', autenticacioncontrol.autentificar, usuarioControl.get_usuario_one)
 api.delete('/delete_all', autenticacioncontrol.autentificar, usuarioControl.deleteMany)
 api.delete('/usuario_delete/:id', autenticacioncontrol.autentificar, usuarioControl.deleteOne)
