@@ -5,10 +5,11 @@ import { MenuRoutingModule } from './menu-routing.module';
 import { MenuComponent } from './menu.component';
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component';
 import { UsuarioComponent } from './usuario/usuario.component';
+import { EditUserComponent } from './edit-user/edit-user.component';
 
 
 @NgModule({
-  declarations: [MenuComponent, RegistroUsuarioComponent, UsuarioComponent],
+  declarations: [MenuComponent, RegistroUsuarioComponent, UsuarioComponent, EditUserComponent],
   imports: [
     CommonModule,
     MenuRoutingModule
