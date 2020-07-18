@@ -9,7 +9,7 @@ import { from } from 'rxjs';
 const routes: Routes = [{ path: '', component: MenuComponent },
 { path: 'usuario', component: UsuarioComponent },
 { path: 'register-users', component: RegistroUsuarioComponent },
-{ path: 'editUser', component: EditUserComponent }];
+{ path: 'edit-users', component: EditUserComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],

@@ -10,6 +10,7 @@ export class PermisosService {
   private token: string;
   private usuarioLogin:Usuario;
   private sessionID:string;
+  private rol:string;
 
   constructor() {
     this.token = null,
@@ -42,5 +43,8 @@ export class PermisosService {
 
   obtenerSession(): string {
     return this.sessionID;
+  }
+  getUserRol(): string {
+    return this.rol;
   }
 }

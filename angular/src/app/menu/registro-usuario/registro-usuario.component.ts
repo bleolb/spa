@@ -4,7 +4,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router, NavigationEnd } from '@angular/router';
 import { CrudService } from '../../services/crud.service';
 import { PermisosService } from '../../services/permisos.service';
-import { Data } from '../../models/data';
+//import { Data } from '../../models/data';
+import { ConstantPool } from '@angular/compiler';
 @Component({
   selector: 'app-registro-usuario',
   templateUrl: './registro-usuario.component.html',
@@ -55,9 +56,10 @@ export class RegistroUsuarioComponent implements OnInit {
               rol,
             },
           };
-          let user = this.cudService.insert('insert', datos);
+          let user = this.cudService.insert('insertusuario', datos);
+          console.log(user)
           if (user) {
-              this.router.navigate(['/login']).then
+              this.router.navigate(['/menu/usuario']).then
               this.permisosService.destruirToken();
           }
         }

@@ -17,7 +17,7 @@ export class CrudService {
     }
     insert(endPoint: string,dataInsert:object):Array<any>{
       let returndata:Array<any>=[];
-      this.http.post<Data>(`${this.url}${endPoint}`,dataInsert,this.servidor.getHeaders())
+      this.http.post<Data>(`${this.url}${endPoint}`,dataInsert,this.servidor.getHeader1())
       .subscribe(data=>{
         if(data.transaccion){
           returndata =data.data;
@@ -31,7 +31,7 @@ export class CrudService {
       delete(endPoint: string, _id: string): Array<any> {
         let returnData: Array<any> = [];
         this.http
-          .delete<Data>(`${this.url}${endPoint}/${_id}`, this.servidor.getHeaders())
+          .delete<Data>(`${this.url}${endPoint}/${_id}`, this.servidor.getHeader1())
           .subscribe((data) => {
             if (data.transaccion) {
               returnData = data.data;
