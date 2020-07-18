@@ -30,7 +30,7 @@ export class UsuarioComponent implements OnInit {
   }
   getUsers(): void {
     this.http
-      .get(`${this.url}usuarios`)
+      .get(`${this.url}get_usuarios`)
       .subscribe((data: any) => {
         data.data.forEach((element) => {
           this.user.push(element);

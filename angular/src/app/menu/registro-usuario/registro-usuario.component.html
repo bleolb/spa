@@ -1,1 +1,349 @@
-<p>registro-usuario works!</p>
+<!-- <script src="https://code.jquery.com/jquery-2.2.4.min.js"></script>
+<style>
+.star {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  border-radius: 0;
+}
+
+@keyframes twinkle {
+  0% {
+    transform: scale(1, 1);
+    background: rgba(58, 11, 230, 0.342);
+    animation-timing-function: linear;
+  }
+  40% {
+    transform: scale(0.8, 0.8);
+    background: rgb(142, 142, 155);
+    animation-timing-function: ease-out;
+  }
+  80% {
+    background: rgba(19, 20, 36, 0);
+    transform: scale(1, 1);
+  }
+  100% {
+    background: rgba(21, 19, 39, 0);
+    transform: scale(1, 1);
+  }
+}
+</style>
+
+<section
+      class="homescreen m-0 flex flex-col w-screen justify-center bg-gray-800 h-screen text-gray-100 "
+    >
+      <nav>
+        <ul class="flex justify-between text-xl py-8 px-8 md:px-48 ">
+          <li>
+            Crear Usuario
+          </li>
+          <li>
+            <a href="https://github.com/Icesofty" target="_blank" rel="noopener noreferrer">Nuevo  Usuario</a>
+          </li>
+        </ul>
+      </nav>
+
+      <h1>
+        <div class="px-40">
+        <form [formGroup]="createuserForm" class="w-full max-w-lg">
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Nombre
+        </label>
+        <input formControlName='nombre' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="text" placeholder="">
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Apellido
+        </label>
+        <input formControlName='apellido' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  type="text" placeholder="">
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-6">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Email
+        </label>
+        <input formControlName='email' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-red-500 rounded py-3 px-4 mb-3 leading-tight focus:outline-none focus:bg-white" type="email" placeholder="">
+      </div>
+      <div class="w-full md:w-1/2 px-3">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Edad
+        </label>
+        <input formControlName='edad' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  type="number" placeholder="">
+      </div>
+    </div>
+    <div class="flex flex-wrap -mx-3 mb-2">
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" >
+          Password
+        </label>
+        <input formControlName='passw' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500" type="password" placeholder="">
+      </div>
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2">
+          Repita Password
+        </label>
+        <input formControlName='verifypassw' class="appearance-none block w-full bg-gray-200 text-gray-700 border border-gray-200 rounded py-3 px-4 leading-tight focus:outline-none focus:bg-white focus:border-gray-500"  type="password" placeholder="">
+      </div>
+      <div class="w-full md:w-1/2 px-3 mb-6 md:mb-0">
+        <label class="block uppercase tracking-wide text-gray-700 text-xs font-bold mb-2" for="grid-state">
+          Rol
+        </label>
+        <div class="relative">
+          <select formControlName='rol' class="block appearance-none w-full bg-gray-200 border border-gray-200 text-gray-700 py-3 px-4 pr-8 rounded leading-tight focus:outline-none focus:bg-white focus:border-gray-500" id="grid-state">
+            <option></option>
+            <option>Estuadiante</option>
+            <option>Administrador</option>
+          </select>
+          <div class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
+            <svg class="fill-current h-4 w-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"><path d="M9.293 12.95l.707.707L15.657 8l-1.414-1.414L10 10.828 5.757 6.586 4.343 8z"/></svg>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button (click)="createUser()" type="submit"class="bg-blue-400  text-white font-bold py-2 px-10" name="button">Guardar</button>
+  </form>
+      </div>
+      </h1>
+    </section>
+<script>
+for (var i = 0; i < 100; i++) {
+  var star =
+    '<div class="star m-0" style="animation: twinkle ' +
+    (Math.random() * 5 + 5) +
+    's linear ' +
+    (Math.random() * 1 + 1) +
+    's infinite; top: ' +
+    Math.random() * $(window).height() +
+    'px; left: ' +
+    Math.random() * $(window).width() +
+    'px;"></div>';
+  $('.homescreen').append(star);
+}
+
+</script> -->
+<!-- <body class="bg-gray-100 flex bg-local" style="background: url('./assets/svg/architect.svg')">
+  <div class="bg-gray-100 mx-auto max-w-6xl bg-white py-20 px-12 lg:px-24 shadow-xl mb-24">
+    <form>
+      <div class="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4 flex flex-col">
+        <div class="-mx-3 md:flex mb-6">
+          <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="company">
+              Nombre
+            </label>
+            <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" id="company" type="text" placeholder="Netboard">
+          </div>
+          <div class="md:w-1/2 px-3">
+            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="title">
+              Apellido
+            </label>
+            <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" id="title" type="text" placeholder="Software Engineer">
+          </div>
+        </div>
+        <div class="-mx-3 md:flex mb-6">
+          <div class="md:w-full px-3">
+            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="application-link">
+              Application Link*
+            </label>
+            <input class="w-full bg-gray-200 text-black border border-gray-200 rounded py-3 px-4 mb-3" id="application-link" type="text" placeholder="http://....">
+          </div>
+        </div>
+        <div class="-mx-3 md:flex mb-2">
+          <div class="md:w-1/2 px-3 mb-6 md:mb-0">
+            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="location">
+              Location*
+            </label>
+            <div>
+              <select class="w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" id="location">
+                <option>Abuja</option>
+                <option>Enugu</option>
+                <option>Lagos</option>
+              </select>
+            </div>
+          </div>
+          <div class="md:w-1/2 px-3">
+            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="job-type">
+              Job Type*
+            </label>
+            <div>
+              <select class="w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" id="job-type">
+                <option>Full-Time</option>
+                <option>Part-Time</option>
+                <option>Internship</option>
+              </select>
+            </div>
+          </div>
+          <div class="md:w-1/2 px-3">
+            <label class="uppercase tracking-wide text-black text-xs font-bold mb-2" for="department">
+              Department*
+            </label>
+            <div>
+              <select class="w-full bg-gray-200 border border-gray-200 text-black text-xs py-3 px-4 pr-8 mb-3 rounded" id="department">
+                <option>Engineering</option>
+                <option>Design</option>
+                <option>Customer Support</option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <div class="-mx-3 md:flex mt-2">
+          <div class="md:w-full px-3">
+            <button class="md:w-full bg-gray-900 text-white font-bold py-2 px-4 border-b-4 hover:border-b-2 border-gray-500 hover:border-gray-100 rounded-full">
+              Button
+            </button>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</body> -->
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://unpkg.com/tailwindcss@1.3.4/dist/tailwind.min.css" rel="stylesheet">
+</head>
+<body class="h-screen overflow-hidden flex items-center justify-center" style="background: #edf2f7;">
+    <style>
+  /* RED BORDER ON INVALID INPUT */
+  .check input:invalid {
+      border-color: red;
+  }
+
+  /* FLOATING LABEL */
+  .label-floating input:not(:placeholder-shown),
+  .label-floating textarea:not(:placeholder-shown) {
+      padding-top: 1.4rem;
+  }
+  .label-floating input:not(:placeholder-shown) ~ label,
+  .label-floating textarea:not(:placeholder-shown) ~ label {
+      font-size: 0.8rem;
+      transition: all 0.2s ease-in-out;
+      color: #1f9d55;
+      opacity: 1;
+  }
+
+</style>
+<form id="contact-me" class="w-full mx-auto max-w-3xl bg-white shadow p-8 text-gray-700 ">
+
+
+    <h2 class="w-full my-2 text-3xl font-bold leading-tight my-5">Crear Usuario</h2>
+    <!-- name last namefield -->
+    <div class="flex flex-wrap mb-6">
+        <div class="relative w-full appearance-none label-floating">
+            <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+            id="name" type="text" placeholder="Nombre"required>
+            <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
+                Nombre
+            </label>
+        </div>
+    </div>
+    <div class="flex flex-wrap mb-6">
+      <div class="relative w-full appearance-none label-floating">
+          <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+          id="name" type="text" placeholder="Apellido"required>
+          <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
+              Apellido
+          </label>
+      </div>
+  </div>
+  <div class="flex flex-wrap mb-6">
+    <div class="relative w-full appearance-none label-floating">
+        <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+        id="name" type="text" placeholder="Edad"required>
+        <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
+            Edad
+        </label>
+    </div>
+</div>
+<div class="flex flex-wrap mb-6">
+  <div class="relative w-full appearance-none label-floating">
+      <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+      id="name" type="text" placeholder="Rol"required>
+      <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
+         Rol
+      </label>
+  </div>
+</div>
+    <!-- email field -->
+    <div class="flex flex-wrap mb-6">
+        <div class="relative w-full appearance-none label-floating">
+            <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+            id="name" type="text" placeholder="Your email"required>
+            <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
+                Your email
+            </label>
+        </div>
+    </div>
+    <div class="flex flex-wrap mb-6">
+      <div class="relative w-full appearance-none label-floating">
+          <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+          id="name" type="text" placeholder="Password"required>
+          <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
+              Password
+          </label>
+      </div>
+  </div>
+  <div class="flex flex-wrap mb-6">
+    <div class="relative w-full appearance-none label-floating">
+        <input class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+        id="name" type="text" placeholder="Confirmar Password"required>
+        <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
+            Confirmar Password
+        </label>
+    </div>
+</div>
+    <!-- Message field -->
+    <div class="flex flex-wrap mb-6">
+        <div class="relative w-full appearance-none label-floating">
+            <textarea class="autoexpand tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+                id="message" type="text" placeholder="Message..."></textarea>
+                <label for="message" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">Message...
+            </label>
+        </div>
+    </div>
+
+    <div class="">
+        <button class="w-full shadow bg-teal-400 hover:bg-teal-400 focus:shadow-outline focus:outline-none text-white font-bold py-2 px-4 rounded"
+            type="submit">
+            Send
+        </button>
+
+    </div>
+</form>
+
+
+<script>
+
+
+//RED BORDER ON INVALID INPUT
+document.getElementById('contact-me').addEventListener("invalid", function (event) {
+	this.classList.add('check');
+}, true);
+
+
+
+
+	// TEXT AREA AUTO EXPAND
+var textarea = document.querySelector('textarea.autoexpand');
+
+textarea.addEventListener('keydown', autosize);
+
+function autosize(){
+  var el = this;
+  setTimeout(function(){
+    el.style.cssText = 'height:auto; padding: 1.4rem .2rem .5rem';
+
+    el.style.cssText = 'height:' + el.scrollHeight + 'px';
+  },0);
+}
+
+
+
+</script>
+</body>
+</html>
