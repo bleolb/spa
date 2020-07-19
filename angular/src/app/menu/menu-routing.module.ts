@@ -5,7 +5,6 @@ import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.co
 import { EditUserComponent } from './edit-user/edit-user.component'
 import { MenuComponent } from './menu.component';
 import { GuardsService } from '../guard/guards.service';
-//import { TokenService } from '../guard/token.service';
 import { from } from 'rxjs';
 
 const routes: Routes = [{ path: '', component: MenuComponent },

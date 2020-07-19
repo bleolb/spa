@@ -18,9 +18,9 @@ export class EditUserComponent implements OnInit {
     private http: HttpClient,
     private router: Router,
     private CrudService:CrudService,) {
-       if (sessionStorage.getItem("user")) {
-         console.log(sessionStorage.getItem("user"))
-       this.user=JSON.parse(sessionStorage.getItem("user"));
+       if (sessionStorage.getItem('user')) {
+         console.log(sessionStorage.getItem('user'))
+       this.user=JSON.parse(sessionStorage.getItem('user'));
     }
 
   }
@@ -61,7 +61,7 @@ export class EditUserComponent implements OnInit {
        if (user) {
          console.log(this.user._id)
          console.log(Data)
-         this.router.navigate(['/menu/usuarios']);
+         this.router.navigate(['/menu/usuario']);
          localStorage.clear();
        }
      }

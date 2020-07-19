@@ -27,14 +27,14 @@
   }
 
 </style>
-<form [formGroup] = "update" id="contact-me" class="w-full mx-auto max-w-3xl bg-white shadow p-8 text-gray-700 ">
+<form [formGroup]="createuserForm" id="contact-me" class="w-full mx-auto max-w-3xl bg-white shadow p-8 text-gray-700 ">
 
 
     <h2 class="w-full my-2 text-3xl font-bold leading-tight my-5">Editar Datos</h2>
     <!-- name field -->
     <div class="flex flex-wrap mb-6">
         <div class="relative w-full appearance-none label-floating">
-            <input formControlName='nombre' class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+            <input formControlName='nombre' [(ngModel)]="user.nombre"class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
             id="name" type="text" placeholder="Nombre"required>
             <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
                 Nombre
@@ -43,7 +43,7 @@
     </div>
     <div class="flex flex-wrap mb-6">
       <div class="relative w-full appearance-none label-floating">
-          <input formControlName='apellido' class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+          <input formControlName='apellido' [(ngModel)]="user.apellido" class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
           id="name" type="text" placeholder="Apellido"required>
           <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
             Apellido
@@ -52,7 +52,7 @@
   </div>
   <div class="flex flex-wrap mb-6">
     <div class="relative w-full appearance-none label-floating">
-        <input formControlName='edad' class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+        <input formControlName='edad'  [(ngModel)]="user.edad"   class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
         id="name" type="text" placeholder="edad "required>
         <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
            Edad   confpass
@@ -61,7 +61,7 @@
 </div>
 <div class="flex flex-wrap mb-6">
   <div class="relative w-full appearance-none label-floating">
-      <input formControlName='rol' class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+      <input formControlName='rol' [(ngModel)]="user.rol" class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
       id="name" type="text" placeholder="rol"required>
       <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
         Rol
@@ -72,14 +72,14 @@
     <!-- email field -->
     <div class="flex flex-wrap mb-6">
         <div class="relative w-full appearance-none label-floating">
-            <input formControlName='email' class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
+            <input formControlName='email' [(ngModel)]="user.email" class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
             id="name" type="text" placeholder="Your email"required>
             <label for="name" class="absolute tracking-wide py-2 px-4 mb-4 opacity-0 leading-tight block top-0 left-0 cursor-text">
                email
             </label>
         </div>
     </div>
-    <div class="flex flex-wrap mb-6">
+    <!-- <div class="flex flex-wrap mb-6">
       <div class="relative w-full appearance-none label-floating">
           <input formControlName='passw' class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
           id="name" type="text" placeholder="password"required>
@@ -87,8 +87,8 @@
             password
           </label>
       </div>
-  </div>
-  <div class="flex flex-wrap mb-6">
+  </div> -->
+  <!-- <div class="flex flex-wrap mb-6">
     <div class="relative w-full appearance-none label-floating">
         <input formControlName='verifypassw' class="tracking-wide py-2 px-4 mb-3 leading-relaxed appearance-none block w-full bg-gray-200 border border-gray-200 rounded focus:outline-none focus:bg-white focus:border-gray-500"
         id="name" type="text" placeholder="Confirmar password"required>
@@ -96,7 +96,7 @@
           password
         </label>
     </div>
-</div>
+</div> -->
     <!-- Message field -->
     <!-- <div class="flex flex-wrap mb-6">
         <div class="relative w-full appearance-none label-floating">

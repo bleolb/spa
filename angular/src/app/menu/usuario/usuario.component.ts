@@ -37,10 +37,10 @@ export class UsuarioComponent implements OnInit {
         });
       });
   }
-  public edit(user): void {
+  public edit(user){
     sessionStorage.setItem('user', JSON.stringify(user));
-    this.router.navigate(['/menu/edit-users']).then
-   this.permisosService.destruirToken();
+    this.router.navigate(['/menu/edit-users'])
+    console.log(sessionStorage.setItem)
   }
   deletUuser(_id) {
     this.crudService.delete('usuario_delete', _id);

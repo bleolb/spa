@@ -59,8 +59,8 @@ export class RegistroUsuarioComponent implements OnInit {
           let user = this.cudService.insert('insertusuario', datos);
           console.log(user)
           if (user) {
-              this.router.navigate(['/menu/usuario']).then
-              this.permisosService.destruirToken();
+              this.router.navigate(['/menu/usuario'])
+
           }
         }
       } else {

@@ -1,19 +1,19 @@
-// import { Injectable } from '@angular/core';
-// import { CanActivate, Router } from '@angular/router';
-// import { PermisosService } from '../services/permisos.service'
+import { Injectable } from '@angular/core';
+import { CanActivate, Router } from '@angular/router';
+import { PermisosService } from '../services/permisos.service'
 
 
-// @Injectable({
-//   providedIn: 'root'
-// })
-// export class TokenService implements CanActivate {
+@Injectable({
+  providedIn: 'root'
+})
+export class TokenService implements CanActivate {
 
-//   constructor(public auth: PermisosService, public router: Router) { }
-//   canActivate(){
-//     if(this.auth.isAuthenticated()){
-//       this.router.navigate(['login']);
-//       return false;
-//     }
-//     return true;
-//   }
-// }
+  constructor(public auth: PermisosService, public router: Router) { }
+  canActivate(){
+    if(this.auth.isAuthenticated()){
+      this.router.navigate(['login']);
+      return false;
+    }
+    return true;
+  }
+}
