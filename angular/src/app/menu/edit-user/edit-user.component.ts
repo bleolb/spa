@@ -19,8 +19,10 @@ export class EditUserComponent implements OnInit {
     private router: Router,
     private CrudService:CrudService,) {
        if (sessionStorage.getItem("user")) {
+         console.log(sessionStorage.getItem("user"))
        this.user=JSON.parse(sessionStorage.getItem("user"));
     }
+
   }
 
   ngOnInit(): void {
@@ -30,9 +32,40 @@ export class EditUserComponent implements OnInit {
        apellido: ['', [Validators.required]],
        edad: ['', [Validators.required]],
        email: ['', [Validators.required]],
-    //   passw: ['', [Validators.required]],
+
     verifypassw: ['', [Validators.required]],
    });
   }
+  update(){
+    let nombre = this.createuserForm.get('nombre').value;
+    let apellido = this.createuserForm.get('apellido').value;
+    let edad = this.createuserForm.get('edad').value;
+    let email = this.createuserForm.get('email').value;
 
+    let rol = this.createuserForm.get('rol').value;
+;
+    if (this.createuserForm.valid) {
+
+      } else {
+        let Data = {
+          data: {
+            nombre,
+            apellido,
+            edad,
+            email,
+            rol,
+          },
+        };
+        let user= this.CrudService.put(
+       'update',this.user._id,Data);
+       if (user) {
+         console.log(this.user._id)
+         console.log(Data)
+         this.router.navigate(['/menu/usuarios']);
+         localStorage.clear();
+       }
+     }
+
+  }
 }
+
