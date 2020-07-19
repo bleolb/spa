@@ -4,10 +4,12 @@ import { UsuarioComponent} from './usuario/usuario.component'
 import { RegistroUsuarioComponent } from './registro-usuario/registro-usuario.component'
 import { EditUserComponent } from './edit-user/edit-user.component'
 import { MenuComponent } from './menu.component';
+import { GuardsService } from '../guard/guards.service';
+//import { TokenService } from '../guard/token.service';
 import { from } from 'rxjs';
 
 const routes: Routes = [{ path: '', component: MenuComponent },
-{ path: 'usuario', component: UsuarioComponent },
+{ path: 'usuario', component: UsuarioComponent, canActivate: [GuardsService] },
 { path: 'register-users', component: RegistroUsuarioComponent },
 { path: 'edit-users', component: EditUserComponent }];
 

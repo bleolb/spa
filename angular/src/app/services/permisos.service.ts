@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Data } from '../models/data';
 import { Usuario } from '../models/usuario';
-import * as jwt_decode from 'jwt-decode'
+import * as jwt_decode from 'jwt-decode';
+import { JwtHelperService } from '@auth0/angular-jwt';
 @Injectable({
   providedIn: 'root'
 })
@@ -11,6 +12,7 @@ export class PermisosService {
   private usuarioLogin:Usuario;
   private sessionID:string;
   private rol:string;
+  public jwtHelper: JwtHelperService
 
   constructor() {
     this.token = null,
@@ -28,6 +30,10 @@ export class PermisosService {
     } else {
       return false;
     }
+  }
+  public isAuthenticated(): boolean {
+    return this.token ===null;
+    console.log(this.token)
   }
   obtenerToken(): string {
     return this.token;

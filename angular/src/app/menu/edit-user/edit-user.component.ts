@@ -24,7 +24,7 @@ export class EditUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.createuserForm = this.formBuilder.group({
+      this.createuserForm = this.formBuilder.group({
       nombre: ['', [Validators.required]],
        rol: ['', [Validators.required]],
        apellido: ['', [Validators.required]],
